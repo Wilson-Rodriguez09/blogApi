@@ -1,12 +1,20 @@
-from rest_framework.viewsets import ViewSet
+"""from rest_framework.viewsets import ViewSet
 from rest_framework.response import Response
-from rest_framework import status
+from rest_framework import status"""
+from rest_framework.viewsets import ModelViewSet
 from apps.post.models import post
 from apps.post.api.serializers import PostSerializer
 
 
-class PostViewSet(ViewSet):
-    def list(self, request): 
+class PostModelViewSet(ModelViewSet):
+   serializer_class = PostSerializer
+   queryset = post.objects.all()
+   
+
+
+
+
+   """def list(self, request): 
         #Post = [Posts.title for Posts in post.objects.all()]
         serializer = PostSerializer(post.objects.all(), many=True)
         return Response(status=status.HTTP_200_OK, data=serializer.data)
@@ -20,4 +28,4 @@ class PostViewSet(ViewSet):
         serializer=PostSerializer(data=request.data)
         serializer.is_valid(raise_exception=True)
         serializer.save()
-        return self.get(request)
+        return self.get(request)"""
