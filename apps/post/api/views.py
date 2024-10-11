@@ -4,13 +4,13 @@ from rest_framework import status"""
 from rest_framework.viewsets import ModelViewSet
 from apps.post.models import post
 from apps.post.api.serializers import PostSerializer
+from apps.post.api.permissions import IsAdminOrReadOnly
 
 
 class PostModelViewSet(ModelViewSet):
+   permission_classes = [IsAdminOrReadOnly]
    serializer_class = PostSerializer
    queryset = post.objects.all()
-   
-
 
 
 
