@@ -4,8 +4,8 @@ from apps.rol.models import Rol
 from django.db.models import SET_NULL
 
 class User(AbstractUser):
-    cedula = models.CharField(max_length=20, unique=True)
-    edad = models.CharField(max_length=20, unique=True)
+    cedula = models.CharField(max_length=20,null=True)
+    edad = models.CharField(max_length=20, unique=True,null=True)
     fkrol = models.ForeignKey(Rol, on_delete=models.SET_NULL, null=True)
 
     def __str__(self):
